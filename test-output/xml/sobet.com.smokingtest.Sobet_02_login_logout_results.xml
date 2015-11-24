@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Smoking"
+           tests="1"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="15.969">
+  <properties />
+  
+  
+            <testcase name="testCase" time="15.969" classname="sobet.com.smokingtest.Sobet_02_login_logout" />
+      
+</testsuite>

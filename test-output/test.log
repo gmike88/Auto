@@ -1,0 +1,70 @@
+2015-11-23 17:25:22 [main]-[INFO] Using Chrome
+2015-11-23 17:25:22 [main]-[INFO] Started BrowserEmulator
+2015-11-23 17:25:23 [main]-[INFO] Pause 500 ms
+2015-11-23 17:25:26 [main]-[INFO] Opened url http://www.sobet.tk/sobet/login
+2015-11-23 17:25:27 [main]-[INFO] Pause 500 ms
+2015-11-23 17:25:27 [main]-[INFO] Found element //*[@class='lgn']
+2015-11-23 17:25:27 [main]-[INFO] Found desired element //*[@class='lgn']
+2015-11-23 17:25:27 [main]-[INFO] Clicked //*[@class='lgn']
+2015-11-23 17:25:27 [main]-[INFO] Pause 500 ms
+2015-11-23 17:25:28 [main]-[INFO] Found element //input[@id='username']
+2015-11-23 17:25:28 [main]-[INFO] Found desired element //input[@id='username']
+2015-11-23 17:25:28 [main]-[INFO] Type kris00 at //input[@id='username']
+2015-11-23 17:25:28 [main]-[INFO] Pause 500 ms
+2015-11-23 17:25:28 [main]-[INFO] Found element //input[@id='password']
+2015-11-23 17:25:28 [main]-[INFO] Found desired element //input[@id='password']
+2015-11-23 17:25:28 [main]-[INFO] Type kris1234 at //input[@id='password']
+2015-11-23 17:25:29 [main]-[INFO] Pause 500 ms
+2015-11-23 17:25:29 [main]-[INFO] Found element //*[@class='btn']
+2015-11-23 17:25:29 [main]-[INFO] Found desired element //*[@class='btn']
+2015-11-23 17:25:29 [main]-[INFO] Clicked //*[@class='btn']
+2015-11-23 17:25:31 [main]-[INFO] Pause 2000 ms
+2015-11-23 17:25:31 [main]-[INFO] Found text kris00
+2015-11-23 17:25:33 [main]-[INFO] Pause 2500 ms
+2015-11-23 17:25:34 [main]-[INFO] Pause 500 ms
+2015-11-23 17:25:34 [main]-[INFO] Found element //*[@class='quitall hand']
+2015-11-23 17:25:34 [main]-[INFO] Found desired element //*[@class='quitall hand']
+2015-11-23 17:25:34 [main]-[INFO] Clicked //*[@class='quitall hand']
+2015-11-23 17:25:34 [main]-[INFO] Pause 500 ms
+2015-11-23 17:25:34 [main]-[INFO] Found element //*[@i-id='logout-ok']
+2015-11-23 17:25:34 [main]-[INFO] Found desired element //*[@i-id='logout-ok']
+2015-11-23 17:25:34 [main]-[INFO] Clicked //*[@i-id='logout-ok']
+2015-11-23 17:25:36 [main]-[INFO] Pause 2000 ms
+2015-11-23 17:25:36 [main]-[INFO] Found element //*[@class='lgn']
+2015-11-23 17:25:37 [main]-[INFO] Pause 500 ms
+2015-11-23 17:25:38 [main]-[INFO] Quitted BrowserEmulator
+2015-11-23 17:31:32 [main]-[INFO] Using Chrome
+2015-11-23 17:31:32 [main]-[INFO] Started BrowserEmulator
+2015-11-23 17:31:32 [main]-[INFO] Pause 500 ms
+2015-11-23 17:31:37 [main]-[INFO] Opened url http://www.sobet.tk/sobet/login
+2015-11-23 17:31:37 [main]-[INFO] Pause 500 ms
+2015-11-23 17:31:37 [main]-[INFO] Found element //*[@class='lgn']
+2015-11-23 17:31:37 [main]-[INFO] Found desired element //*[@class='lgn']
+2015-11-23 17:31:37 [main]-[INFO] Clicked //*[@class='lgn']
+2015-11-23 17:31:38 [main]-[INFO] Pause 500 ms
+2015-11-23 17:31:38 [main]-[INFO] Found element //input[@id='username']
+2015-11-23 17:31:38 [main]-[INFO] Found desired element //input[@id='username']
+2015-11-23 17:31:38 [main]-[INFO] Type kris00 at //input[@id='username']
+2015-11-23 17:31:39 [main]-[INFO] Pause 500 ms
+2015-11-23 17:31:39 [main]-[INFO] Found element //input[@id='password']
+2015-11-23 17:31:39 [main]-[INFO] Found desired element //input[@id='password']
+2015-11-23 17:31:39 [main]-[INFO] Type kris1234 at //input[@id='password']
+2015-11-23 17:31:39 [main]-[INFO] Pause 500 ms
+2015-11-23 17:31:39 [main]-[INFO] Found element //*[@class='btn']
+2015-11-23 17:31:39 [main]-[INFO] Found desired element //*[@class='btn']
+2015-11-23 17:31:39 [main]-[INFO] Clicked //*[@class='btn']
+2015-11-23 17:31:41 [main]-[INFO] Pause 2000 ms
+2015-11-23 17:31:41 [main]-[INFO] Found text kris00
+2015-11-23 17:31:44 [main]-[INFO] Pause 2500 ms
+2015-11-23 17:31:44 [main]-[INFO] Pause 500 ms
+2015-11-23 17:31:44 [main]-[INFO] Found element //*[@class='quitall hand']
+2015-11-23 17:31:44 [main]-[INFO] Found desired element //*[@class='quitall hand']
+2015-11-23 17:31:44 [main]-[INFO] Clicked //*[@class='quitall hand']
+2015-11-23 17:31:45 [main]-[INFO] Pause 500 ms
+2015-11-23 17:31:45 [main]-[INFO] Found element //*[@i-id='logout-ok']
+2015-11-23 17:31:45 [main]-[INFO] Found desired element //*[@i-id='logout-ok']
+2015-11-23 17:31:45 [main]-[INFO] Clicked //*[@i-id='logout-ok']
+2015-11-23 17:31:47 [main]-[INFO] Pause 2000 ms
+2015-11-23 17:31:47 [main]-[INFO] Found element //*[@class='lgn']
+2015-11-23 17:31:47 [main]-[INFO] Pause 500 ms
+2015-11-23 17:31:49 [main]-[INFO] Quitted BrowserEmulator

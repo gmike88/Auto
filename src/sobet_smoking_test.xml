@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite verbose="5" name="Sobet Smoking Test">
+<listeners>
+       <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+       <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+ </listeners>             
+	<test name="Smoking" preeserve-order="true">
+		<classes>
+			<class name="sobet.com.smokingtest.Sobet_02_login_logout" />
+		</classes>
+	</test>
+</suite>

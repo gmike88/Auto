@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.AfterClass;
 
 import com.netease.dagger.BrowserEmulator;
+import com.netease.datadriver.DBOperator;
 import com.netease.datadriver.ExcelDataProvider;
 
 public class Sobet_02_login_logout {
@@ -40,6 +41,7 @@ public class Sobet_02_login_logout {
   @BeforeClass
   public void setUp() throws Exception {
 	  sobet = new BrowserEmulator();
+	  DBOperator.testDataPreparation(this.getClass().getSimpleName().toString());
   }
 
   @AfterClass(alwaysRun = true)

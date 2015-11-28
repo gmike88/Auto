@@ -35,9 +35,10 @@
 	<classpathentry kind="lib" path="C:/Users/kris/workspace/Auto/jar/jxl.jar"/>
 	<classpathentry kind="lib" path="C:/Users/kris/workspace/Auto/jar/log4j-1.2.16.jar"/>
 	<classpathentry kind="lib" path="C:/Users/kris/workspace/Auto/jar/reportng-1.1.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/kris/workspace/Auto/jar/selenium-java-2.46.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kris/workspace/Auto/jar/selenium-java-2.46.0.jar" sourcepath="/selenium"/>
 	<classpathentry kind="lib" path="C:/Users/kris/workspace/Auto/jar/selenium-java-2.46.0-srcs.jar"/>
 	<classpathentry kind="lib" path="C:/Users/kris/workspace/Auto/jar/velocity-dep-1.4.jar"/>
 	<classpathentry kind="lib" path="C:/Users/kris/workspace/Auto/jar/mysql-connector-java-5.1.34.jar"/>
+	<classpathentry kind="lib" path="C:/Users/kris/workspace/Auto/jar/arrow-0.1.0.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

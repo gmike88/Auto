@@ -429,7 +429,7 @@ public class BrowserEmulator {
 	 * @param pixels
 	 *            = the pixels to be scrolled up or down
 	 */
-	private void scroll(String direction, int pixels) {
+	public void scroll(String direction, int pixels) {
 		String symbol;
 		switch (direction) {
 		case ("down"): {
@@ -689,7 +689,7 @@ public class BrowserEmulator {
 			if (isTextPresent(text, timeout)) {
 				handleFailure("Found undesired text " + text);
 			} else {
-				logger.info("Not found undesired text " + text);
+				logger.error("Not found undesired text " + text);
 			}
 		}
 	}
@@ -1079,7 +1079,8 @@ public class BrowserEmulator {
 	}
 	
 	/**
-	 * Get cell webelement
+	 * Get cell webelement prepare for image code auto-authentication
+	 * combine with Tesseract-OCR
 	 */
 	public void screenShotForElement(RemoteWebDriver driver, WebElement element, String path) {
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);

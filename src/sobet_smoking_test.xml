@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite verbose="5" name="Sobet Smoking Test">
 <listeners>
-       <listener class-name="org.uncommons.reportng.HTMLReporter"/>
-       <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+       <listener class-name="com.netease.qa.testng.TestResultListener" />
+       <listener class-name="com.netease.qa.testng.RetryListener" />
+       <listener class-name="com.netease.qa.testng.PowerEmailableReporter" />
  </listeners>             
 	<test name="Smoking" preeserve-order="true">
 		<classes>
 			<class name="sobet.com.smokingtest.Sobet_02_login_logout" />
+			<class name="sobet.com.smokingtest.Sobet_03_email_bind" />			
 		</classes>
 	</test>
 </suite>

@@ -1099,4 +1099,30 @@ public class BrowserEmulator {
 		}
 	}
 	
+	/**
+	 * Select iframe by index
+	 * 
+	 * @param index
+	 */
+	public void selectFrameByIndex(int index) {
+		try{
+			List<WebElement> a = browserCore.findElementsByTagName("iframe");
+			browserCore.switchTo().frame(a.get(index));
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Quit iframe and switch to default content
+	 * 
+	 */
+	public void quitFrame() {
+		try{
+			browserCore.switchTo().defaultContent();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 }

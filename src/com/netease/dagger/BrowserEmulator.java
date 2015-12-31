@@ -72,6 +72,8 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.TakesScreenshot;
 
+import com.anteambulo.SeleniumJQuery.*;
+
 /**
  * BrowserEmulator is based on Selenium2 and adds some enhancements
  * 
@@ -102,7 +104,7 @@ public class BrowserEmulator {
 			.getName());
 
 	public BrowserEmulator() {
-		BasicConfigurator.configure();
+//		BasicConfigurator.configure();
 		PropertyConfigurator.configure(GlobalSettings.baseStorageUrl
 				+ "\\src\\log4j.properties");
 		setupBrowserCoreType(GlobalSettings.browserCoreType);
@@ -217,7 +219,7 @@ public class BrowserEmulator {
 			browserCore.switchTo().frame(iframe);
 		} catch (Exception e) {
 			e.printStackTrace();
-			handleFailure("Fail to find frame: " + frameXpath);
+			handleFailure("Failed to find frame: " + frameXpath);
 		}
 		logger.info("Find frame: " + frameXpath);
 	}
@@ -235,7 +237,7 @@ public class BrowserEmulator {
 			robot.keyRelease(KeyEvent.VK_T);
 		} catch (Exception e) {
 			e.printStackTrace();
-			handleFailure("Fail to open new TAB");
+			handleFailure("Failed to open new TAB");
 		}
 		logger.info("Success to open new TAB");
 	}
@@ -258,7 +260,7 @@ public class BrowserEmulator {
 			return text;
 		} catch (Exception e) {
 			e.printStackTrace();
-			handleFailure("Fail to get clipboard content");
+			handleFailure("Failed to get clipboard content");
 		}
 		logger.info("Success to get clipboard content");
 		return null;
@@ -293,9 +295,23 @@ public class BrowserEmulator {
 			robot.keyRelease(KeyEvent.VK_W);
 		} catch (Exception e) {
 			e.printStackTrace();
-			handleFailure("Fail to close previous TAB");
+			handleFailure("Failed to close previous TAB");
 		}
 		logger.info("Success to close previous TAB");
+	}
+	
+	/**
+	 * javascript executer
+	 * @param js
+	 */
+	public void jsExecuter(String js) {
+		try {
+			pause(stepInterval);
+			javaScriptExecutor.executeScript(js);
+			logger.info("Javascript execution done");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -306,7 +322,7 @@ public class BrowserEmulator {
 		try {
 			pause(stepInterval);
 			currentURL = browserCore.getCurrentUrl();
-			System.out.print("Current URL is " + currentURL);
+			logger.info("Current URL is " + currentURL);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -362,7 +378,7 @@ public class BrowserEmulator {
 	 */
 	public void clickCSS(String CSS) {
 		pause(stepInterval);
-		expectElementExistOrNot(true, CSS, timeout);
+		expectElementExistOrNotCSS(true, CSS, timeout);
 		try {
 			clickTheClickableCSS(CSS, System.currentTimeMillis(), 2500);
 		} catch (Exception e) {
@@ -605,7 +621,7 @@ public class BrowserEmulator {
 	 * Mimic system-level keyboard event
 	 * 
 	 * @param keyCode
-	 *            such as KeyEvent.VK_TAB, KeyEvent.VK_F11
+	 *            http://www.cnblogs.com/hsapphire/archive/2009/12/16/1625642.html
 	 */
 	public void pressKeyboard(int keyCode) {
 		pause(stepInterval);
@@ -653,10 +669,10 @@ public class BrowserEmulator {
 		try {
 			Actions action = new Actions(browserCore);
 			action.sendKeys(keys);
+			logger.info("Pressed key with string " + keys);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
-		logger.info("Pressed key with string " + keys);
 	}
 
 	// TODO Mimic system-level mouse event
@@ -676,6 +692,7 @@ public class BrowserEmulator {
 	@SuppressWarnings("deprecation")
 	public void expectTextExistOrNot(boolean expectExist, final String text,
 			int timeout) {
+		pause(stepInterval);
 		if (expectExist) {
 			try {
 				new WaitExtension(text).wait("Failed to find text " + text,
@@ -776,7 +793,7 @@ public class BrowserEmulator {
 	 * @param timeout
 	 *            timeout in millisecond
 	 */
-	public void expectElementHasContent(String elementContent,
+	public void expectedElementHasContent(String elementContent,
 			final String xpath, int timeout) {
 		try {
 			if (browserCore.findElementByXPath(xpath).isDisplayed()) {
@@ -786,7 +803,7 @@ public class BrowserEmulator {
 					logger.info("Expected element has content of "
 							+ elementContent);
 				} else {
-					logger.info("Expected element doesn't has content of "
+					logger.error("Expected element doesn't has content of "
 							+ elementContent);
 				}
 			} else {
@@ -838,7 +855,7 @@ public class BrowserEmulator {
 			logger.info("Found element " + xpath);
 			return true;
 		} else {
-			logger.info("Not found element" + xpath);
+			logger.error("Not found element" + xpath);
 			return false;
 		}
 	}
@@ -985,6 +1002,28 @@ public class BrowserEmulator {
 	}
 		
 	/**
+	 * Get total pages number of the table after choosing how many rows is displayed in one page 
+	 * 
+	 * @param xpath
+	 *              the path to find exact table
+	 * @param onePageDataNumber
+	 *              how many rows of data is showed in one page
+	 */
+	public int getTablePageNumber(String xpath, String onePageDataNumber) {
+		try{
+			String dataTotalNumber = this.getBrowserCore().findElementByXPath(xpath).getText();
+			int k = dataTotalNumber.indexOf("of");
+			int dataNumber = Integer.parseInt(dataTotalNumber.substring(k+3));
+			int pageDataNumber = Integer.parseInt(onePageDataNumber);
+			int pageNumber = dataNumber/pageDataNumber + 1;
+			return pageNumber;
+		}catch (Exception e){
+			logger.error("读取文件内容出错");
+			return 0;
+		}
+	}
+	
+	/**
 	 * The method for reading TXT file
 	 * 
 	 * @param filepath
@@ -1041,7 +1080,7 @@ public class BrowserEmulator {
 	}
 	
 	/**
-	 * Get cell webelement
+	 * Get cell webelement by index
 	 */
 	public WebElement getCellWebElementByIndex(By by, String tableCellAddress) {
 		try{
@@ -1060,7 +1099,28 @@ public class BrowserEmulator {
 	}
 	
 	/**
-	 * Get cell webelement
+	 * Get column webelements
+	 */
+	public List<WebElement> getColumnElements(By by, int columnAddress) {
+		try{
+			WebElement table = browserCore.findElement(by);
+			int rowNum = table.findElements(By.tagName("tr")).size();
+			List<WebElement> rows = table.findElements(By.tagName("tr"));
+			List<WebElement> columnElements = new ArrayList<WebElement>();
+			for(int i=0; i< rowNum; i++){
+				WebElement theRow = rows.get(i);
+				WebElement columnElement = getCell(theRow, columnAddress);
+				columnElements.add(columnElement);
+			}
+			return columnElements;
+		}catch (Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
+		
+	/**
+	 * Get cell webelement text
 	 */
 	public String getCellText(By by, String tableCellAddress) {
 		try{
@@ -1124,5 +1184,66 @@ public class BrowserEmulator {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * execute JQuery
+	 * 
+	 */
+	public void executerJQuery() {
+		try{
+			jQueryFactory jq = new jQueryFactory();
+//			jq.setJs(browserCore);
+			WebElement we = browserCore.findElementByXPath("");
+			jq.query(we).val("123").select();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
+	/**
+	 * javascript executer which must contains one object to be affected
+	 * 
+	 * @param js
+	 * @param by
+	 * 
+	 */
+	public void jsExecuter(By by, String js) {
+		try{
+			WebElement element = browserCore.findElement(by);
+			JavascriptExecutor jsExecutor = (JavascriptExecutor) browserCore;
+			jsExecutor.executeScript(js, element);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * javascript executer which must contains one object to be affected
+	 * 
+	 * @param js
+	 * @param by
+	 * 
+	 */
+	public void uploadFile(String filepath) {
+		try{
+			//put file path in a clipboard
+			StringSelection strSel = new StringSelection(filepath);
+			Toolkit.getDefaultToolkit().getSystemClipboard().setContents(strSel, null);
+			//imitate mouse event ENTER/COPY/PASTE
+			Robot robot = new Robot();
+			pause(500);
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_V);
+			robot.keyRelease(KeyEvent.VK_V);
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			logger.info("Success to upload file: " + filepath);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
